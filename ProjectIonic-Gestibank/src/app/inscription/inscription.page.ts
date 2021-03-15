@@ -40,7 +40,7 @@ export class InscriptionPage implements OnInit {
        role: "CLIENT",
        status: "EN ATTENTE",
        account: this.compteSelected(),
-       password: this.password
+       password: this.Password()
       }
       this.service.postUser(this.user).subscribe(
         response => {
@@ -61,6 +61,7 @@ export class InscriptionPage implements OnInit {
     return this.compte;
   }
 
+  
   async creationAlert() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
@@ -82,4 +83,33 @@ export class InscriptionPage implements OnInit {
     toast.present();
   }
 
+  
+  Password() {
+    // throw new Error('Function not implemented.');
+    // if (typeof l==='undefined'){var l:any=8;}
+    let l:number = 8;
+    /* c : chaîne de caractères alphanumérique */
+    var c='abcdefghijknopqrstuvwxyzACDEFGHJKLMNPQRSTUVWXYZ12345679',
+    n=c.length,
+    /* p : chaîne de caractères spéciaux */
+    p='!@#$+-*&_',
+    o=p.length,
+    r='',
+    n=c.length,
+    /* s : determine la position du caractère spécial dans le mdp */
+    s=Math.floor(Math.random() * (p.length-1));
+    
+    for(var i=0; i<l; ++i){
+      if(s == i){
+        /* on insère à la position donnée un caractère spécial aléatoire */
+        r += p.charAt(Math.floor(Math.random() * o));
+      }else{
+        /* on insère un caractère alphanumérique aléatoire */
+        r += c.charAt(Math.floor(Math.random() * n));
+      }
+    }
+    return r;
+    
+  }
 }
+  
