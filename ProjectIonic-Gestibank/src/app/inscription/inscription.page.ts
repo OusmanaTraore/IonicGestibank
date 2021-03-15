@@ -99,7 +99,7 @@ export class InscriptionPage implements OnInit {
     /* s : determine la position du caractère spécial dans le mdp */
     s=Math.floor(Math.random() * (p.length-1));
     
-    for(var i=0; i<l; ++i){
+    for(let i=0; i<l; ++i){
       if(s == i){
         /* on insère à la position donnée un caractère spécial aléatoire */
         r += p.charAt(Math.floor(Math.random() * o));

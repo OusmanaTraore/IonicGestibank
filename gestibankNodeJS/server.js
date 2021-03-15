@@ -235,9 +235,9 @@ app.post('/users/add/', async (req,res) => {
               // cc:usermail,
               // bcc:usermail,
               subject: 'Validation de création de compte GestiBank',
-              text: `Félicitations votre compte a été créer avec succès  \n
-               Login :  ${mailClient}  \n
-               Votre mot de passe : ${password}
+              text: `Félicitations votre compte a été créé avec succès  \n
+               Login: ${mailClient}  \n
+               Votre mot de passe:${password}
                `
             };
   transporter.sendMail(mailOptions, function(error, info){

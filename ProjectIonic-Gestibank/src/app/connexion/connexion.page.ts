@@ -13,7 +13,7 @@ export class ConnexionPage implements OnInit {
 
 
   public email: string;
-  public password: string = "";
+  public password: string;
   userInfos: User;
   constructor(
     private router:Router,
@@ -29,13 +29,12 @@ export class ConnexionPage implements OnInit {
   }
   
   connexion(){
-    console.log(this.password);
-    if(this.email!=null && this.password!=null){
+  if(this.email!=null && this.password!=null){
       this.service.userConnexion(this.email).subscribe(data =>{
-        // console.log(this.userInfos);
         this.userInfos = <User>data;
+        console.log(this.userInfos);
         if(this.userInfos != null && this.password == this.userInfos.password){
-          console.log("Auth Réussie");
+          // console.log("Auth Réussie");
           let role = this.userInfos.role;
           console.log(role);
           switch(role) {
