@@ -39,6 +39,34 @@ const routes: Routes = [
     path: 'client',
     loadChildren: () => import('./client/client.module').then( m => m.ClientPageModule)
   },
+  
+
+  {
+    path: 'edit-agent/:id',
+    loadChildren: () => import('./edit-agent/edit-agent.module').then( m => m.EditAgentPageModule)
+  },
+  {
+    path: 'update-agent',
+    loadChildren: () => import('./update-agent/update-agent.module').then( m => m.UpdateAgentPageModule)
+  },
+  {
+    path: 'delete-agent',
+    loadChildren: () => import('./delete-agent/delete-agent.module').then( m => m.DeleteAgentPageModule)
+  },
+  {
+    path: 'create-agent',
+    loadChildren: () => import('./create-agent/create-agent.module').then( m => m.CreateAgentPageModule)
+  },
+  {
+    path: 'list-client',
+    loadChildren: () => import('./list-client/list-client.module').then( m => m.ListClientPageModule)
+  },
+  {
+    path: 'list-admin',
+    loadChildren: () => import('./list-admin/list-admin.module').then( m => m.ListAdminPageModule)
+  },
+
+
 ];
 
 @NgModule({

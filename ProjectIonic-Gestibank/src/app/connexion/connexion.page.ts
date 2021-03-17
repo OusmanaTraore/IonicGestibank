@@ -31,7 +31,7 @@ export class ConnexionPage implements OnInit {
   connexion(){
   if(this.email!=null && this.password!=null){
       this.service.userConnexion(this.email).subscribe(data =>{
-        this.userInfos = <User>data;
+        this.userInfos = <User><unknown>data;
         console.log(this.userInfos);
         if(this.userInfos != null && this.password == this.userInfos.password){
           // console.log("Auth Réussie");

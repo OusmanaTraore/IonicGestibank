@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {User}from '../model';
+import {User,Agent, Admin}from '../model';
 import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  usersSubject = new Subject<any[]>();
-  private users: User[] = [];
+  // usersSubject = new Subject<any[]>();
+  public users: User;
+  public agents: Agent;
+  // private clients: Client;
+  public admins:Admin;
 
   public dataBase = "http://127.0.0.1:86/users/";
-  private url = "http://127.0.0.1:86/users/";
+  public url = "http://127.0.0.1:86/";
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(public httpClient: HttpClient) { }
 
   userConnexion(userEmail: string){
     return this.httpClient.get(this.dataBase + userEmail);
@@ -21,6 +24,41 @@ export class UserService {
   postUser(User: User){
     return this.httpClient.post(this.dataBase + "add", User);
   }
+
+  getAllUsers(){
+    //dataBase
+    return this.httpClient.get(this.dataBase + 'list');
+  }
+  getAllAgents(){
+    //url
+    return this.httpClient.get(this.url + 'agents/' + 'list');
+  }
+  getAllClients(){
+    //url
+    return this.httpClient.get(this.url + 'clients/' + 'list');
+  }
+  getValidatedUsers(){
+    return this.httpClient.get(this.url + 'clients/'+ '/list/valide');
+  }
+  getWaitingUsers(){
+    return this.httpClient.get(this.url + 'clients/'+ '/list/attente');
+  }
+  getAllAdmins(){
+    //url
+    return this.httpClient.get(this.url + 'admin/' + 'list');
+  }
+
+
+
+
+  putUser(User){
+    return this.httpClient.post(this.dataBase + 'update/' + ['email'], User);
+  }
+
+  deleteUser(email: String){
+    return this.httpClient.post(this.dataBase + 'update/' + ['email'], email);
+  }
+
 
   createAccount(user) {
     this.httpClient.post(this.url, user).subscribe(
@@ -146,16 +184,16 @@ getAgent(matricule: string) {
   );
 }
 
-deleteUser(email: string) {
-  this.httpClient.delete('http://127.0.0.1:86/users/' + email).subscribe(
-    () => {
-     console.log('agent supprimée');
-    },
-    (error) => {
-      console.log('erreur : ' + error);
-    }
-  );
-}
+// deleteUser(email: string) {
+//   this.httpClient.delete('http://127.0.0.1:86/users/' + email).subscribe(
+//     () => {
+//      console.log('agent supprimée');
+//     },
+//     (error) => {
+//       console.log('erreur : ' + error);
+//     }
+//   );
+// }
 
 requestNewPwd(email: string) {
   this.httpClient.put('http://127.0.0.1:86/forgot-password/' + email, null).subscribe(

@@ -7,13 +7,13 @@
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-icon slot="icon-only" name="home" ></ion-icon>
-      <ion-button color="primary"  routerLink="/home"></ion-button>
+      <ion-buttons color="primary"  routerLink="/home"></ion-buttons>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-card *ngFor="let item of agentsData">
+  <ion-card *ngFor="let item of clientsData">
     <ion-header>
       <ion-title >
         {{ item.role }} : {{ item.matricule }}
@@ -36,14 +36,13 @@
         <ion-button color="warning" size="small"  routerLink='/edit-agent/{{item.id}}'>
           <ion-icon name="create"></ion-icon>Editer
         </ion-button>
-        <ion-button color="success" size="small"  >
-          <ion-icon name="hammer-outline"></ion-icon>Affecter
-        </ion-button>
+    
         <ion-button color="danger" size="small"  (click)="delete(item)">
           <ion-icon name="trash"></ion-icon>Supprimer
         </ion-button>
       </ion-item>
     </ion-card-content>
   </ion-card>
-  <ion-button expand="block" [routerLink]="['/create-agent/']">Ajouter un  Agent</ion-button>
+ 
+  <ion-button  expand="block" [routerLink]="['/create-agent/']">Ajouter un  Client</ion-button>
 </ion-content>

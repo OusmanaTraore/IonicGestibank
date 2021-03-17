@@ -21,15 +21,23 @@ export interface Agent{
     role: "AGENT",
     matricule: number,
     password: string
+    account: string
 }
 
-export interface Administrator{
+export interface Admin{
     name: string,
     firstname: string,
     tel: string,
     email: string,
-    role: "ADMINISTRATOR",
+    role: "ADMIN",
     matricule: number,
-    password: string
+    password: string,
+    account: string
 }
 
+export class Student {
+    id: number;
+    name: string;
+    age: string;
+    address: string;
+ }
